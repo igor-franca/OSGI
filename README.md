@@ -87,9 +87,11 @@ _O **@reference** é utilizado para solicitar ao registro de serviço uma refere
 
 ## Construindo um projeto OSGI
 
+![This is a alt text.](https://wiki.idempiere.org/w-en/images/7/7c/Layering-osgi.png "This is a sample image.")
+
 _Inicialmente criamos um diretório que irá conter nosso projeto._
 
-_Em seguida criamos o arquivo **settings.gradle**_
+_Em seguida, criamos o arquivo **settings.gradle**_
 
 ```
 buildscript {
@@ -118,20 +120,64 @@ _Em seguida é criado o arquivo gradle.properties que seleciona uma versão espe
 liferay.workspace.product=portal-7.3-ga7
 ```
 
+## _Criando o primeiro modulo(Bundle)_
 
-| Left columns  | Right columns |
-| ------------- |:-------------:|
-| left foo      | right foo     |
-| left bar      | right bar     |
-| left baz      | right baz     |
-
-## Blocks of code
+_Inicialmente criamos uma estrutura de pasta._
 
 ```
-let message = 'Hello world';
-alert(message);
+ mkdir -p basic-training-able-impl/src/main/java/com/liferay/basic/training/able/internal/activator
 ```
 
-## Inline code
+_Posteriormente criamos um arquivo **.jar**, no diretório recem criado **activate**, nomeado de **AbleBundleActivator** e adicionamos as seguintes informações:_
 
-This web site is using `markedjs/marked`.
+```
+package com.liferay.basic.training.able.internal.activator;
+
+public class AbleBundleActivator {
+
+	public AbleBundleActivator() {
+		System.out.println("Constructing AbleBundleActivator");
+	}
+
+}
+```
+
+_Porém ao tentarmos compilar nosso programa:_
+
+```
+./gradlew classes
+```
+
+_Iremos perceber que as features Gradle utilizadas nesse Build estão depreciadas, mas o comando foi executado com sucesso._
+
+_Porém o diretório de compilação **build** não foi criado._
+
+_Ainda em nosso diretório **activator** devemos criar um arquivo de configuração com os metadados basícos necessários para os modulos OSGI._
+
+```
+code basic-training-able-impl/bnd.bnd
+```
+
+```
+Bundle-Name: Liferay Basic Training Able Implementation
+Bundle-SymbolicName: com.liferay.basic.training.able.impl
+Bundle-Version: 1.0.0
+```
+
+_Em seguida, iremos criar um arquivo build.gradle_
+
+```
+touch basic-training-able-impl/build.gradle
+```
+
+_Um arquivo build.gradle informa ao Liferay Workspace que esse diretório é um módulo Java._
+
+_Finalmente, ao tentarnos compilar novamente nosso programa:_
+
+```
+./gradlew classes
+```
+
+_Iremos perceber que um novo diretório **(build)** se encontra em basic-training-able-impl._
+
+
