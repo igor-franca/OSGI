@@ -6,14 +6,14 @@ _É uma especificação que produzir um sistema dinâmico de **componentes** Jav
 
 ## Bundles
 
-_São modulos que possuem identificadores únicos (Manifesto) com cobeçalhos especificos (válidos) e devem ser armazenados em um arquivo JAR. Podemos dizer que o Bundle é a unidade básica de modularidade._
+_São modulos que possuem identificadores únicos (Manifesto) com cabeçalhos específicos (válidos) e devem ser armazenados em um arquivo JAR. Podemos dizer que o Bundle é a unidade básica de modularidade._
 
 _Na identificação do bundle temos dois cabeçalhos específicos no manifesto que são utilizados para identificar um Bundles, são eles:_
 
 * __*Bundle-SymbolicName*__
 * __*Bundle-Version*__
 
-## Versinamento Semântico
+## Versionamento Semântico
 
 ![This is a alt text.](https://www.matteus.dev/wp-content/uploads/versionamento-semantico-2.png "This is a sample image.")
 
@@ -21,7 +21,7 @@ _Na identificação do bundle temos dois cabeçalhos específicos no manifesto q
 
 Exemplo: version= **[** 1.2, 2.0 **)**
 
-_Nesse caso estamos informando que as versões que devem ser utilzadas pelo meu Bundles está entre 1.2 e inevitavelmente antes da 2.0 (existe funcionalidades incompatíveis com as versões anteriores na versão 2.0)_
+_Nesse caso estamos informando que as versões que devem ser utilizadas pelo meu Bundles está entre 1.2 e inevitavelmente antes da 2.0 (existem funcionalidades incompatíveis com as versões anteriores na versão 2.0)_
 
 _Ou seja, se observarmos bem. Utilizamos o **colchete para incluir versões** e o **parenteses para excluir versões** incompatíveis_
 
@@ -37,13 +37,14 @@ _Um Bundle inevitavelmente possui 6 estados, sendo eles:_
 
 ![This is a alt text.](https://wiki.cdot.senecacollege.ca/w/imgs/Bundle-lifecycle.png "This is a sample image.")
 
-_Podemos **gerenciar o ciclo de vida de um Bundle** usando linha de comando. Utilizando o Gogo Shell que é um recurso que permite acessar o container OSGI utilizanfo o Telnet._
+_Podemos **gerenciar o ciclo de vida de um Bundle** usando linha de comando. Utilizando o Gogo Shell que é um recurso que permite acessar o container OSGI utilizando o Telnet._
 
 _Uma vez presente no Gogo Shell podemos utilizar alguns comandos para gerenciar o bundle como:_
 
-1. Comandos:
-
  1. install caminho/para/bundle/nomeBundle.jar
+
+_Após o bundle ser instalado será gerado bundle ID, esse ID pode ser utilizado na execução dos outros comandos que gerenciam o estado de um bundle._
+
  1. uninstall bundleId
  1. resolve bundleId
  1. update bundleId
@@ -53,7 +54,7 @@ _Uma vez presente no Gogo Shell podemos utilizar alguns comandos para gerenciar 
 
 ## Componente
 
-_Componente é um objeto que possui uma funcuionalidade especifica. Exemplo: Serviço, Servelet, Portlet e Comandos._
+_Componente é um objeto que possui uma funcionalidade específica. Exemplo: Serviço, Servelet, Portlet e Comandos._
 
 _Qualquer classe dentro de um Bundle pode ser declarada como um componente._
 
@@ -61,9 +62,9 @@ _Component é um objeto gerenciado pelo OSGI e possui um ciclo de vida, assim co
 
 _O componente ficará dentro do Bundle e o Container OSGI cuidará dos dois._
 
-_A vantagem de utilziar uma classe como um componente é que elas podem ser publicadas como serviços e estar disponíveis para outros componentes. Além disso, possui um ciclo de vida independente e reutilizado, podendo possuir propriedades e activação._
+_A vantagem de utilizar uma classe como um componente é que elas podem ser publicadas como serviços e estar disponíveis para outros componentes. Além disso, possui um ciclo de vida independente e reutilizado, podendo possuir propriedades e ativação._
 
-_O **@component** é usando para registrar um componente dentro do registro de serviços._
+_O **@component** é usado para registrar um componente dentro do registro de serviços._
 
 ## Serciço
 
@@ -71,15 +72,15 @@ _O serviço é um componente registrado pelo Service Registry no container do OS
 
 _O bundle pode declarar as funcionalidades que ele fornece como serviço OSGI._
 
-_O bundle pode pedir por específica funcionalidade nos serciços OSGI._
+_Além disso, o bundle pode pedir por funcionalidades específicas nos serviços OSGI._
 
-_O Service Registry funciona como uma destribuidora que recebe serviços exportados pelos Bundles e envia serviços para os Bundles que estão solicitando._
+_O Service Registry funciona como uma distribuidora que recebe serviços exportados pelos Bundles e envia serviços para os Bundles que estão solicitando._
 
-## Declarative Sercices - DS
+## Declarative Services - DS
 
-_É um Framework de ingestão de dependência OSGI, permite declarar e consumir serviços via XML e anotações. Inicializa a classe, injeta as dependencias, ativa os componentes e registra os serviços._
+_É um Framework de ingestão de dependência OSGI, permite declarar e consumir serviços via XML e anotações. Inicializa a classe, injeta as dependências, ativa os componentes e registra os serviços._
 
-_O **@reference** é utilizado para solicitar ao registro de serviço uma referencia de um componente específico._
+_O **@reference** é utilizado para solicitar ao registro de serviço uma referência de um componente específico._
 
 > Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
 >
@@ -128,7 +129,7 @@ _Inicialmente criamos uma estrutura de pasta._
  mkdir -p basic-training-able-impl/src/main/java/com/liferay/basic/training/able/internal/activator
 ```
 
-_Posteriormente criamos um arquivo **.jar**, no diretório recem criado **activate**, nomeado de **AbleBundleActivator** e adicionamos as seguintes informações:_
+_Posteriormente criamos um arquivo **.jar**, no diretório recém criado **activate**, nomeado de **AbleBundleActivator** e adicionamos as seguintes informações:_
 
 ```
 package com.liferay.basic.training.able.internal.activator;
@@ -152,7 +153,7 @@ _Iremos perceber que as features Gradle utilizadas nesse Build estão depreciada
 
 _Porém o diretório de compilação **build** não foi criado._
 
-_Ainda em nosso diretório **activator** devemos criar um arquivo de configuração com os metadados basícos necessários para os modulos OSGI._
+_Ainda em nosso diretório **activator** devemos criar um arquivo de configuração com os metadados básicos necessários para os módulos OSGI._
 
 ```
 code basic-training-able-impl/bnd.bnd
@@ -172,7 +173,7 @@ touch basic-training-able-impl/build.gradle
 
 _Um arquivo build.gradle informa ao Liferay Workspace que esse diretório é um módulo Java._
 
-_Finalmente, ao tentarnos compilar novamente nosso programa:_
+_Finalmente, ao tentarmos compilar novamente nosso programa:_
 
 ```
 ./gradlew classes
@@ -196,7 +197,7 @@ d run --name ephesians-liferay --rm -it -p 8080:8080 liferay/portal:7.3.6-ga7
 
 _O name informa o nome do nosso container Docker e o --rm configura o container para ser removido após a finalização do mesmo, não tendo suas informações persistidas._
 
-_Se analizarmos os modulos dentro da imagem Docker em opt/liferay/osgi/modules:_
+_Se analizarmos os módulos dentro da imagem Docker em opt/liferay/osgi/modules:_
 
 ```
 d exec -it ephesians-liferay /bin/ls /opt/liferay/osgi/modules
@@ -204,7 +205,7 @@ d exec -it ephesians-liferay /bin/ls /opt/liferay/osgi/modules
 
 _Iremos receber como retorno uma pasta vazia._
 
-_Agora iremos enviar nosso novo modulo recem deployado para o caminho opt/liferay/osgi/modules dentro da imagem Docker:_
+_Agora iremos enviar nosso novo módulo recém deployado para o caminho opt/liferay/osgi/modules dentro da imagem Docker:_
 
 ```
 d cp bundles/osgi/modules/com.liferay.basic.training.able.impl.jar ephesians-liferay:/opt/liferay/osgi/modules
@@ -228,7 +229,7 @@ _Porém, existe uma maneira de Deployar nosso arquivo jar e já envia-lo para o 
 ./gradlew deploy -Ddeploy.docker.container.id=ephesians-liferay
 ```
 
-_Se executarmos novamente o ls no diretório de modulos do Docker podemos perceber que iremos receber como retorno:_
+_Se executarmos novamente o ls no diretório de módulos do Docker podemos perceber que iremos receber como retorno:_
 
 ```
 com.liferay.basic.training.able.impl.jar
@@ -255,7 +256,7 @@ _Retorno:_
 ```
 com.liferay.basic.training.able.impl-1.0.0.jar
 ```
-_E por fim, se precisarmos atualizar o modulo deployado:_
+_E por fim, se precisarmos atualizar o módulo deployado:_
 ```
  ./gradlew clean deploy -Ddeploy.docker.container.id=ephesians-liferay
 ```
