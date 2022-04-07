@@ -19,6 +19,7 @@ archivesBaseName=com.liferay.basic.training.able.impl
 -plugin.metatype=com.liferay.ant.bnd.metatype.MetatypePlugin
 -fixupmessages.unicode.string=Invalid unicode string
 -jsp=*.jsp,*.jspf,*.jspx
+Bundle-Activator=com.liferay.basic.training.able.internal.activator.AbleBundleActivator
 Bundle-SymbolicName=com.liferay.basic.training.able.impl
 status=integration
 displayName=project '\:basic-training-able-impl'
