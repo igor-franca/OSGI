@@ -1,0 +1,2 @@
+com/liferay/basic/training/able/number/generator/AbleNumberGenerator.java
+ com.liferay.basic.training.able.number.generator.AbleNumberGenerator

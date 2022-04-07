@@ -1,2 +1,4 @@
 com/liferay/basic/training/able/internal/activator/AbleBundleActivator.java
  com.liferay.basic.training.able.internal.activator.AbleBundleActivator
+com/liferay/basic/training/able/internal/number/generator/AbleNumberGeneratorImpl.java
+ com.liferay.basic.training.able.internal.number.generator.AbleNumberGeneratorImpl

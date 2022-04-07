@@ -1,0 +1,37 @@
+-add-resource=/home/me/Desktop/Learning-java/my-osgi-project/basic-training-baker-web/build/tmp/compileJSP,/home/me/Desktop/Learning-java/my-osgi-project/basic-training-baker-web/build/jspc
+Bundle-Name=Liferay Basic Training Baker Web
+libsDirName=libs
+Javac-Debug=on
+-plugin.liferay=com.liferay.ant.bnd.resource.AddResourceVerifierPlugin,com.liferay.ant.bnd.jsp.JspAnalyzerPlugin,com.liferay.ant.bnd.metatype.MetatypePlugin,com.liferay.ant.bnd.npm.NpmAnalyzerPlugin,com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin,com.liferay.ant.bnd.sass.SassAnalyzerPlugin,com.liferay.ant.bnd.service.ServiceAnalyzerPlugin,com.liferay.ant.bnd.social.SocialAnalyzerPlugin,aQute.lib.spring.SpringComponent,com.liferay.ant.bnd.spring.SpringDependencyAnalyzerPlugin,com.liferay.ant.bnd.enterprise.EnterpriseAnalyzerPlugin
+docsDirName=docs
+-contract=*
+-metatype=*
+testReportDirName=tests
+Javac-Deprecation=off
+name=basic-training-baker-web
+description=Liferay Basic Training Baker Web
+liferay.workspace.product=portal-7.3-ga7
+distsDirName=distributions
+-fixupmessages.deprecated=annotations are deprecated
+group=my-osgi-project
+archivesBaseName=com.liferay.basic.training.baker.web
+-donotcopy=(.*.wsdd)
+-plugin.metatype=com.liferay.ant.bnd.metatype.MetatypePlugin
+-fixupmessages.unicode.string=Invalid unicode string
+-jsp=*.jsp,*.jspf,*.jspx
+Bundle-SymbolicName=com.liferay.basic.training.baker.web
+status=integration
+displayName=project '\:basic-training-baker-web'
+-consumer-policy=${replacestring;${range;[\=\=,\=\=]};.*,(.*)];$1}
+testResultsDirName=test-results
+-includeresource.compileInclude=
+path=\:basic-training-baker-web
+-noclassforname=true
+Bundle-Version=1.0.0
+-liferay-service-xml=service.xml,*/service.xml
+-cdiannotations=
+-fixupmessages.classpath.empty=Classpath is empty
+version=1.0.0
+-sass=*
+Javac-Encoding=UTF-8
+-provider-policy=${replacestring;${range;[\=\=,\=\=]};.*,(.*)];$1}

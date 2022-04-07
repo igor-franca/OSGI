@@ -1,0 +1,2 @@
+com/liferay/basic/training/baker/web/internal/portlet/BakerPortlet.java
+ com.liferay.basic.training.baker.web.internal.portlet.BakerPortlet

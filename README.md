@@ -72,7 +72,7 @@ _A vantagem de utilizar uma classe como um componente é que elas podem ser publ
 
 _O **@component** é usado para registrar um componente dentro do registro de serviços._
 
-## Serciço
+## Serviço
 
 _O serviço é um componente registrado pelo Service Registry no container do OSGI._
 
@@ -87,10 +87,6 @@ _O Service Registry funciona como uma distribuidora que recebe serviços exporta
 _É um Framework de ingestão de dependência OSGI, permite declarar e consumir serviços via XML e anotações. Inicializa a classe, injeta as dependências, ativa os componentes e registra os serviços._
 
 _O **@reference** é utilizado para solicitar ao registro de serviço uma referência de um componente específico._
-
-> Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
->
->> Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
 
 ## Construindo um projeto OSGI
 
@@ -135,7 +131,7 @@ _Inicialmente criamos uma estrutura de pasta._
  mkdir -p basic-training-able-impl/src/main/java/com/liferay/basic/training/able/internal/activator
 ```
 
-_Posteriormente criamos um arquivo **.jar**, no diretório recém criado **activate**, nomeado de **AbleBundleActivator** e adicionamos as seguintes informações:_
+_Posteriormente criamos um arquivo **.java**, no diretório recém criado **activate**, nomeado de **AbleBundleActivator** e adicionamos as seguintes informações:_
 
 ```
 package com.liferay.basic.training.able.internal.activator;
@@ -193,7 +189,7 @@ _Agora podemos deployar nosso modulo:_
 ```
 ./gradlew deploy
 ```
-_Entretanto nosso novo módulo com.liferay.basic.training.able.impl.jar ainda não pode ser lido pela Liferay._
+_Entretanto nosso novo módulo com.liferay.basic.training.able.impl.jar ainda não pode ser lido pela Liferay(Ainda não enviamos nosso arquivo para iamgem Docker)._
 
 _Podemos levantar uma imagem Docker da Liferay para constatar:_
 
