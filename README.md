@@ -1,4 +1,10 @@
 # Osgi guide
+_ReadMe escrito sintetizando conteúdos presentes em:_
+
+
+_Brian Chan: [Liferat Basic Training OSGI](https://github.com/liferay/liferay-basic-training/tree/master/osgi)._
+
+_Quitumba:[YouTube Playlist](https://github.com/liferay/liferay-basic-training/tree/master/osgi)._
 
 ## Open Service Getway initiative
 
