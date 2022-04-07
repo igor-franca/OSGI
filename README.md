@@ -181,3 +181,83 @@ _Finalmente, ao tentarnos compilar novamente nosso programa:_
 _Iremos perceber que um novo diretório **(build)** se encontra em basic-training-able-impl._
 
 
+_Agora podemos deployar nosso modulo:_
+
+```
+./gradlew deploy
+```
+_Entretanto nosso novo módulo com.liferay.basic.training.able.impl.jar ainda não pode ser lido pela Liferay._
+
+_Podemos levantar uma imagem Docker da Liferay para constatar:_
+
+```
+d run --name ephesians-liferay --rm -it -p 8080:8080 liferay/portal:7.3.6-ga7
+```
+
+_O name informa o nome do nosso container Docker e o --rm configura o container para ser removido após a finalização do mesmo, não tendo suas informações persistidas._
+
+_Se analizarmos os modulos dentro da imagem Docker em opt/liferay/osgi/modules:_
+
+```
+d exec -it ephesians-liferay /bin/ls /opt/liferay/osgi/modules
+```
+
+_Iremos receber como retorno uma pasta vazia._
+
+_Agora iremos enviar nosso novo modulo recem deployado para o caminho opt/liferay/osgi/modules dentro da imagem Docker:_
+
+```
+d cp bundles/osgi/modules/com.liferay.basic.training.able.impl.jar ephesians-liferay:/opt/liferay/osgi/modules
+```
+
+_E se executarmos outro ls dentro do Docker:_
+
+```
+d exec -it ephesians-liferay /bin/ls /opt/liferay/osgi/modules
+```
+
+_Iremos receber como resposta:_
+
+```
+com.liferay.basic.training.able.impl.jar
+```
+
+_Porém, existe uma maneira de Deployar nosso arquivo jar e já envia-lo para o nosso caminho /opt/liferay/osgi/modules substituindo o nosso ./gradlew deploy + docker cp...:_
+
+```
+./gradlew deploy -Ddeploy.docker.container.id=ephesians-liferay
+```
+
+_Se executarmos novamente o ls no diretório de modulos do Docker podemos perceber que iremos receber como retorno:_
+
+```
+com.liferay.basic.training.able.impl.jar
+com.liferay.basic.training.able.impl-1.0.0.jar
+```
+
+_Em seguida finalizamos a execução do nosso container docker e inicializamos novamente. Com isso, será gerada outra imagem totalmente dissociada da imagem anterior._
+
+_Podemos repetir o processo com a nova imagem Docker:_
+
+```
+d run --name ephesians-liferay --rm -it -p 8080:8080 liferay/portal:7.3.6-ga7
+```
+
+```
+./gradlew deploy -Ddeploy.docker.container.id=ephesians-liferay
+```
+_E verificarmos que o arquivo deployado já consta no nosso Docker:_
+
+```
+d exec -it ephesians-liferay /bin/ls /opt/liferay/osgi/modules
+```
+_Retorno:_
+```
+com.liferay.basic.training.able.impl-1.0.0.jar
+```
+_E por fim, se precisarmos atualizar o modulo deployado:_
+```
+ ./gradlew clean deploy -Ddeploy.docker.container.id=ephesians-liferay
+```
+
+_Esse comando irá deletar os objetos buildados antes de deployar novamente, forcando o Gradle a ser recompilado._
